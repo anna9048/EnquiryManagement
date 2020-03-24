@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -70,8 +71,9 @@ public class EnquiryController {
 	
 	// list all enquiries by date
 		@GetMapping("enquiries/{enquiryDate}")
-		public ResponseEntity<List<Enquiry>> getAllEnquiriesbyDate(@PathVariable("enquiryDate") LocalDate enquiryDate) {
-			return new ResponseEntity<List<Enquiry>>(enquiryServ.listEnquiry(enquiryDate), HttpStatus.OK);
+		public ResponseEntity<List<Enquiry>> getAllEnquiriesbyDate(
+				@DateTimeFormat(pattern="yyyy-MM-dd")@PathVariable("enquiryDate") LocalDate enquiryDate) {
+			return new ResponseEntity<List<Enquiry>>(enquiryServ.listEnquiryByDate(enquiryDate), HttpStatus.OK);
 		}
 		
 		// update enquiry details

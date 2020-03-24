@@ -32,7 +32,7 @@ public class EnquiryService implements IEnquiryService{
 	}
 
 	@Override
-	public List<Enquiry> listEnquiry(LocalDate enquiryDate) {
+	public List<Enquiry> listEnquiryByDate(LocalDate enquiryDate) {
 		// TODO Auto-generated method stub
 		return enquiryRepo.findByDate(enquiryDate);
 	}

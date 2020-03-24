@@ -11,5 +11,5 @@ public interface IEnquiryService {
 	public Enquiry addEnquiry(Enquiry enquiry);
 	public Enquiry updateEnquiry(Enquiry enquiry);
 	public List<Enquiry> viewEnquiry();
-	public List<Enquiry> listEnquiry(LocalDate enquiryDate);
+	public List<Enquiry> listEnquiryByDate(LocalDate enquiryDate);
 }

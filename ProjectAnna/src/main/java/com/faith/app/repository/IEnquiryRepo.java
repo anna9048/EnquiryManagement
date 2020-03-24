@@ -11,7 +11,7 @@ import com.faith.app.model.Enquiry;
 
 public interface IEnquiryRepo extends JpaRepository<Enquiry, Integer>{
 
-	@Query("from Enquiry where enquiryDate=?1")
+	@Query("from Enquiry where enquiryDate >=?1")
 	List<Enquiry> findByDate(LocalDate enquiryDate);
 
 }
