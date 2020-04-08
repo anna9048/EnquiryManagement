@@ -1,0 +1,47 @@
+<form class="example">
+    Enquiry date: <input type="date" placeholder="Enter date.." [(ngModel)]="enquiryDate" name="enquiryDate">
+    <button type="submit" (click)="onSearch()">Search</button>
+</form>
+
+
+
+<div class="panel-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name </th>
+                <th>Enquiry date</th>
+                <th> Email</th>
+                <th> Phone</th>
+                <th> qualification_id</th>
+                <th> course_id</th>
+                <th>Query</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let enq of enquiries | async |paginate: { 
+                itemsPerPage: 5,
+                currentPage: p}; let i=index">
+                <td>{{enq.enquiryId}}</td>
+                <td>{{enq.name}}</td>
+                <td>{{enq.enquiryDate}}</td>
+                <td>{{enq.email}}</td>
+                <td>{{enq.phone}}</td>
+                <td>{{enq.qualificationId}}</td>
+                <td>{{enq.courseId}}</td>
+                <td>{{enq.query}}</td>
+                <td>{{enq.leadSource}}</td>
+                <td>{{enq.status}}</td>
+
+                <td><button (click)="followupenquiry(enq.enquiryId)" class="btn btn-primary">Update</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

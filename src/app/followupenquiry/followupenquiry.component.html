@@ -1,0 +1,48 @@
+
+<div [hidden]="submitted">
+    <form [formGroup]="addfollowupenquiryForm" novalidate (ngSubmit)="onSubmitUpdate()">
+
+        <!-- <input type="text" [(ngModel)]="enquiryId" name="enquiryId">-->
+
+        <!-- Remarks-->
+        <div class="form-group">
+            <label class="col-md-4">Remarks</label>
+            <input type="text" class="form-control" required formControlName="comments" #comments />
+        </div>
+        <div *ngIf="addfollowupenquiryForm.controls['comments'].invalid && (addfollowupenquiryForm.controls['comments'].dirty || addfollowupenquiryForm.controls['comments'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addfollowupenquiryForm.controls['comments'].errors.required">
+                Remarks is required.
+            </div>
+        </div>
+
+        <!-- Status-->
+
+        <div class="form-group">
+            <label class="col-md-4"> Status </label>
+            <select formControlName="status" class="form-control" required>
+                <option value="" disabled></option>
+                <option value="Interested">Interested</option>
+                <option value="NotInterested">NotInterested</option>
+                <option value="Later">Later</option>
+            </select>
+
+        </div>
+        <div *ngIf="addfollowupenquiryForm.controls['status'].invalid && (addfollowupenquiryForm.controls['status'].dirty || addfollowupenquiryForm.controls['status'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addfollowupenquiryForm.controls['status'].errors.required">
+                Course is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"
+                [disabled]="addfollowupenquiryForm.pristine || addfollowupenquiryForm.invalid">
+                submit
+            </button>
+        </div>
+    </form>
+</div>
+<div [hidden]="!submitted">
+    <h4>You submitted successfully!</h4>
+</div>

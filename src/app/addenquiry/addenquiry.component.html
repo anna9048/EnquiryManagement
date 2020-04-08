@@ -1,0 +1,137 @@
+
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <hr />
+
+    <div [hidden]="submitted" style="width: 80%;margin-left: 5%;">
+      <form [formGroup]="addenquiryForm" novalidate (ngSubmit)="onSubmit()">
+        <!-- Course Preffered-->
+
+        <div class="form-group">
+          <label class="col-md-4"> Course Preffered </label>
+          <select formControlName="courseId" class="form-control" required>
+            <option value="" disabled>Choose Course</option>
+            <option value="1">Java</option>
+            <option value="2">Python</option>
+            <option value="3">.Net</option>
+            <option *ngFor="let recAdname of courseName" value="{{recAdname.courseId}}">{{recAdname.course_name}}
+            </option>
+          </select>
+
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['courseId'].invalid && (addenquiryForm.controls['courseId'].dirty || addenquiryForm.controls['courseId'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['courseId'].errors.required">
+            Course is required.
+          </div>
+        </div>
+
+
+
+
+        <!-- Candidate Name-->
+        <div class="form-group">
+          <label class="col-md-4">Candidate Name</label>
+          <input type="text" class="form-control" required formControlName="name" #name />
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['name'].invalid && (addenquiryForm.controls['name'].dirty || addenquiryForm.controls['name'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['name'].errors.required">
+            Vendor Name is required.
+          </div>
+        </div>
+
+        <!-- Email id-->
+        <div class="form-group">
+          <label class="col-md-4">Email id</label>
+          <input type="email" class="form-control" required formControlName="email" #email>
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['email'].invalid && (addenquiryForm.controls['email'].dirty || addenquiryForm.controls['email'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['email'].errors.required">
+            Email id is required.
+          </div>
+        </div>
+
+        <!-- Phone-->
+        <div class="form-group">
+          <label class="col-md-4">Phone</label>
+          <input type="text" class="form-control" required formControlName="phone" #phone>
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['phone'].invalid && (addenquiryForm.controls['phone'].dirty || addenquiryForm.controls['phone'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['phone'].errors.required">
+            Phone is required.
+          </div>
+        </div>
+
+        <!-- Academic Qualification-->
+        <div class="form-group">
+          <label class="col-md-4">Academic Qualification </label>
+          <select formControlName="qualificationId" class="form-control" required>
+            <option value=""></option>
+            <option value="1">BTech</option>
+            <option value="2">MTech</option>
+            <option value="3">BCA</option>
+            <option value="4">MCA</option>
+            <!-- <option *ngFor="let type of assetType" value="{{type.adType}}">{{type.adType}}</option>-->
+          </select>
+
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['qualificationId'].invalid && (addenquiryForm.controls['qualificationId'].dirty || addenquiryForm.controls['qualificationId'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['qualificationId'].errors.required">
+            Qualification is required.
+          </div>
+        </div>
+
+        <!-- Lead source-->
+        <div class="form-group">
+          <label class="col-md-4">How do you come to know about the institiue </label>
+          <select formControlName="leadSource" class="form-control" required>
+            <option value=""></option>
+            <option value="newspaper">newspaper</option>
+            <option value="internet">internet</option>
+            <option value="friends">friends</option>
+
+          </select>
+
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['leadSource'].invalid && (addenquiryForm.controls['leadSource'].dirty || addenquiryForm.controls['leadSource'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['leadSource'].errors.required">
+            Lead
+            <source> is required.
+          </div>
+        </div>
+        <!-- Queries-->
+        <div class="form-group">
+          <label class="col-md-4">Queries</label>
+          <input type="text" class="form-control" required formControlName="query" #query>
+        </div>
+        <div
+          *ngIf="addenquiryForm.controls['query'].invalid && (addenquiryForm.controls['query'].dirty || addenquiryForm.controls['query'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="addenquiryForm.controls['query'].errors.required">
+            Queries is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" [disabled]="addenquiryForm.pristine || addenquiryForm.invalid">
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+  </div>
+</div>
